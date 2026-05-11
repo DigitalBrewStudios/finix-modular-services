@@ -21,7 +21,7 @@ let
 in
 {
   # Assert Finit services for those defined in isolation to the system.
-  config = lib.mkIf config.finit.enable {
+  config = {
     finit.services = lib.concatMapAttrs (
       topLevelName: topLevelService: makeServices [ topLevelName ] topLevelService
     ) config.system.services;
