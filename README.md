@@ -1,6 +1,6 @@
 # finix - modular services
 
-Support for [NixOS modular services](https://nixos.org/manual/nixos/unstable/#modular-services) for `finix`.
+Support for [Modular services](https://nixos.org/manual/nixos/unstable/#modular-services) for `finix`.
 
 There is a Matrix room for discussions:
 

@@ -1,6 +1,12 @@
 { config, lib, ... }:
+let
+  inherit (lib) mkOption types;
+in
 {
-  imports = [ (lib.mkAliasOptionModule [ "finit" "service" ] [ "finit" "services" "" ]) ];
+  imports = [
+    (lib.mkAliasOptionModule [ "finit" "service" ] [ "system" "services" ])
+    (lib.mkAliasOptionModule [ "finit" "services" ] [ "system" "services" ])
+  ];
 
   options = {
     finit.services = lib.mkOption {

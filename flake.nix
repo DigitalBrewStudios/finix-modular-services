@@ -1,7 +1,7 @@
 {
-  description = "Support for NixOS modular services in finix";
+  description = "Support for Modular services in finix";
 
   outputs = _: {
-    nixosModules.default = import ./modules;
+    nixosModules.default = import ./modules/service.nix;
   };
 }
