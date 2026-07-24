@@ -6,8 +6,7 @@
   ...
 }:
 let
-  portable-lib = import ./portable/lib.nix { inherit lib; };
-
+  portable-lib = import "${pkgs.path}/lib/services/lib.nix" { inherit lib; };
   modularServiceConfiguration = portable-lib.configure {
     serviceManagerPkgs = pkgs;
     extraRootModules = [
