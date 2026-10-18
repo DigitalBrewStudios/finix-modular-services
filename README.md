@@ -25,3 +25,19 @@ Relevant links:
 
 - https://github.com/NixOS/nixpkgs/pull/372170
 - https://github.com/NixOS/nixpkgs/issues/428084
+
+## Tests
+
+The checks use the compliance suite for modular service integrations from
+nixpkgs, with the VM tests driven by the finix upstream test library. Note that
+`mkTest` is not part of the finix flake's `lib` output; it lives under
+`<finix-input>/tests/lib`:
+
+```shell
+nix flake check                 # eval + VM tests for x86_64-linux and aarch64-linux
+nix build .#checks.x86_64-linux.eval          # eval-level compliance only
+nix build -L .#checks.x86_64-linux.basic-argv # one VM test, with logs
+```
+
+The VM tests boot a finix system with Finit as PID 1, start the suite's
+services, and reload them via `initctl reload`.
